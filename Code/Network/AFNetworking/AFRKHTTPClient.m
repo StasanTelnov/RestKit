@@ -478,7 +478,7 @@ static void AFRKNetworkReachabilityReleaseCallback(const void *info) {
     [request setAllHTTPHeaderFields:self.defaultHeaders];
 
     if (parameters) {
-        if ([method isEqualToString:@"GET"] || [method isEqualToString:@"HEAD"] || [method isEqualToString:@"DELETE"]) {
+        if ([method isEqualToString:@"GET"] || [method isEqualToString:@"HEAD"]) {
             url = [NSURL URLWithString:[[url absoluteString] stringByAppendingFormat:[path rangeOfString:@"?"].location == NSNotFound ? @"?%@" : @"&%@", AFRKQueryStringFromParametersWithEncoding(parameters, self.stringEncoding)]];
             [request setURL:url];
         } else {
