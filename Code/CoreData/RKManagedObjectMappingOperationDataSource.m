@@ -283,7 +283,16 @@ extern NSString * const RKObjectMappingNestingAttributeKeyName;
         }
         if ([objects count] > 0) {
             managedObject = [objects anyObject];
-            if ([objects count] > 1) RKLogWarning(@"Managed object cache returned %ld objects for the identifier configured for the '%@' entity, expected 1.", (long) [objects count], [entity name]);
+            if ([objects count] > 1) {
+                RKLogWarning(@"Managed object cache returned %ld objects for the identifier configured for the '%@' entity, expected 1.", (long) [objects count], [entity name]);
+                RKLogWarning(@"Try deleting duplicates");
+                for (id duplicateObject in objects) {
+                    if (![duplicateObject isEqual:managedObject]) {
+                        [self.managedObjectContext deleteObject:duplicateObject];
+                    }
+                    
+                }
+            }
         }
         if (managedObject && [self.managedObjectCache respondsToSelector:@selector(didFetchObject:)]) {
             [self.managedObjectCache didFetchObject:managedObject];
