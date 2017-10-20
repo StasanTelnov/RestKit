@@ -1,9 +1,9 @@
 //
-//  Testing.h
+//  RKBooleanClass.h
 //  RestKit
 //
-//  Created by Blake Watters on 2/1/12.
-//  Copyright (c) 2009-2012 RestKit. All rights reserved.
+//  Created by Valerio Mazzeo on 18/07/17.
+//  Copyright (c) 2017 RestKit. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,14 +18,6 @@
 //  limitations under the License.
 //
 
+#import <Foundation/Foundation.h>
 
-#import "RKTestFixture.h"
-#import "RKTestNotificationObserver.h"
-#import "RKTestFactory.h"
-#import "RKTestHelpers.h"
-#import "RKMappingTest.h"
-
-#if __has_include("CoreData.h")
-#import "RKConnectionTestExpectation.h"
-#endif
-
+#define RK_BOOLEAN_CLASS [@YES class]
